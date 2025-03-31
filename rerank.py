@@ -41,7 +41,7 @@ class AdvancedRerankingTool(BaseTool):
         self._top_k = top_k
         self._collection_name = collection_name
         try:
-            self._embeddings = OllamaEmbeddings(model="nomic-embed-text", base_url="https://jo3m4y06rnnwhaz.askbhunte.com")
+            self._embeddings = OllamaEmbeddings(model="nomic-embed-text", base_url="")
             self._client = chromadb.PersistentClient(path=persist_directory)
             self._colbert_reranker = RAGPretrainedModel.from_pretrained("colbert-ir/colbertv2.0")
             logger.info("Initialized retrieval components successfully.")
@@ -278,5 +278,6 @@ class AdvancedRerankingTool(BaseTool):
             total_f1 += f1
         
         num_cases = len(test_cases)
+        
         print(f"\n=== Overall Metrics ===\nAverage Precision: {total_precision / num_cases:.3f}\nAverage Recall: {total_recall / num_cases:.3f}\nAverage F1 Score: {total_f1 / num_cases:.3f}")
 

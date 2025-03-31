@@ -1,0 +1,152 @@
+=== Starting Retrieval Tests ===
+
+Testing Query: What is the best tool for machine learning?
+Date: 2025-03-31 09:39:07
+
+=== Results ===
+1. [Score: 0.913, ID: 3, Source: Scikit-learn]
+Content: Scikit-learn provides simple and efficient tools for data mining and data analysis, focusing on traditional machine learning algorithms.
+Why: Highly relevant, strong semantic match, matched terms: for, machine
+Breakdown: Vector=0.894, BM25=0.433, ColBERT=0.817, Context=0.629
+
+2. [Score: 0.812, ID: 4, Source: Python]
+Content: Python is the primary language used for data science and machine learning due to its extensive ecosystem.
+Why: Highly relevant, strong semantic match, strong contextual match, matched terms: for, is, machine, the
+Breakdown: Vector=0.585, BM25=0.717, ColBERT=0.704, Context=0.798
+
+3. [Score: 0.769, ID: 8, Source: GCP]
+Content: Google Cloud AI Platform provides tools for the entire ML workflow from data preparation to prediction.
+Why: Highly relevant, matched terms: for, the
+Breakdown: Vector=0.695, BM25=0.717, ColBERT=0.229, Context=0.517
+
+4. [Score: 0.438, ID: 5, Source: AWS]
+Content: AWS SageMaker is a fully managed service for building, training, and deploying machine learning models in the cloud.
+Why: Moderately relevant, strong contextual match, matched terms: for, is, machine, the
+Breakdown: Vector=0.508, BM25=0.717, ColBERT=0.661, Context=0.779
+
+5. [Score: 0.387, ID: 1, Source: TensorFlow]
+Content: TensorFlow is an open-source platform for machine learning and deep learning, widely used for neural network implementations.
+Why: Moderately relevant, matched terms: for, is, machine
+Breakdown: Vector=0.507, BM25=0.717, ColBERT=0.690, Context=0.628
+
+Testing Query: deep learning framework
+Date: 2025-03-31 09:39:08
+
+=== Results ===
+1. [Score: 1.000, ID: 1, Source: TensorFlow]
+Content: TensorFlow is an open-source platform for machine learning and deep learning, widely used for neural network implementations.
+Why: Highly relevant, strong semantic match, strong contextual match, matched terms: deep, learning
+Breakdown: Vector=0.893, BM25=0.787, ColBERT=0.778, Context=0.828
+
+2. [Score: 1.000, ID: 6, Source: Keras]
+Content: Keras is a high-level neural networks API that runs on top of TensorFlow, making deep learning more accessible.
+Why: Highly relevant, strong semantic match, strong contextual match, matched terms: deep, learning
+Breakdown: Vector=0.843, BM25=0.787, ColBERT=0.800, Context=0.812
+
+3. [Score: 0.469, ID: 2, Source: PyTorch]
+Content: PyTorch offers dynamic computation graphs and is preferred for research in deep learning and neural networks.
+Why: Moderately relevant, strong semantic match, strong contextual match, matched terms: deep, learning
+Breakdown: Vector=0.418, BM25=0.787, ColBERT=0.703, Context=0.720
+
+4. [Score: 0.358, ID: 3, Source: Scikit-learn]
+Content: Scikit-learn provides simple and efficient tools for data mining and data analysis, focusing on traditional machine learning algorithms.
+Why: Moderately relevant, matched terms: learning
+Breakdown: Vector=0.567, BM25=0.364, ColBERT=0.612, Context=0.518
+
+5. [Score: 0.283, ID: 4, Source: Python]
+Content: Python is the primary language used for data science and machine learning due to its extensive ecosystem.
+Why: Moderately relevant, matched terms: learning
+Breakdown: Vector=0.390, BM25=0.516, ColBERT=0.500, Context=0.472
+
+Testing Query: cloud ML deployment services
+Date: 2025-03-31 09:39:09
+
+=== Results ===
+1. [Score: 1.000, ID: 8, Source: GCP]
+Content: Google Cloud AI Platform provides tools for the entire ML workflow from data preparation to prediction.
+Why: Highly relevant, strong semantic match, strong contextual match, matched terms: cloud, ml
+Breakdown: Vector=0.933, BM25=0.769, ColBERT=0.895, Context=0.944
+
+2. [Score: 0.687, ID: 5, Source: AWS]
+Content: AWS SageMaker is a fully managed service for building, training, and deploying machine learning models in the cloud.
+Why: Relevant, strong semantic match
+Breakdown: Vector=0.725, BM25=0.710, ColBERT=0.846, Context=0.596
+
+3. [Score: 0.412, ID: 1, Source: TensorFlow]
+Content: TensorFlow is an open-source platform for machine learning and deep learning, widely used for neural network implementations.
+Why: Moderately relevant
+Breakdown: Vector=0.556, BM25=0.172, ColBERT=0.526, Context=0.533
+
+4. [Score: 0.334, ID: 7, Source: XGBoost]
+Content: XGBoost is an optimized distributed gradient boosting library designed for efficiency and performance.
+Why: Moderately relevant
+Breakdown: Vector=0.367, BM25=0.569, ColBERT=0.404, Context=0.425
+
+5. [Score: 0.330, ID: 10, Source: HuggingFace]
+Content: Hugging Face Transformers provides state-of-the-art natural language processing models and pipelines.
+Why: Moderately relevant
+Breakdown: Vector=0.367, BM25=0.769, ColBERT=0.385, Context=0.293
+
+Testing Query: Python libraries for data science
+Date: 2025-03-31 09:39:10
+
+=== Results ===
+1. [Score: 1.000, ID: 4, Source: Python]
+Content: Python is the primary language used for data science and machine learning due to its extensive ecosystem.
+Why: Highly relevant, strong semantic match, strong contextual match, matched terms: data, for, python, science
+Breakdown: Vector=0.933, BM25=0.827, ColBERT=0.908, Context=0.910
+
+2. [Score: 0.687, ID: 9, Source: Pandas]
+Content: Pandas is essential for data manipulation and analysis in Python machine learning workflows.
+Why: Relevant, strong semantic match, strong contextual match, matched terms: data, for, python
+Breakdown: Vector=0.719, BM25=0.705, ColBERT=0.781, Context=0.770
+
+3. [Score: 0.562, ID: 3, Source: Scikit-learn]
+Content: Scikit-learn provides simple and efficient tools for data mining and data analysis, focusing on traditional machine learning algorithms.
+Why: Relevant, matched terms: data, for
+Breakdown: Vector=0.560, BM25=0.772, ColBERT=0.600, Context=0.610
+
+4. [Score: 0.320, ID: 2, Source: PyTorch]
+Content: PyTorch offers dynamic computation graphs and is preferred for research in deep learning and neural networks.
+Why: Moderately relevant, matched terms: for
+Breakdown: Vector=0.412, BM25=0.372, ColBERT=0.454, Context=0.429
+
+5. [Score: 0.285, ID: 8, Source: GCP]
+Content: Google Cloud AI Platform provides tools for the entire ML workflow from data preparation to prediction.
+Why: Moderately relevant, matched terms: data, for
+Breakdown: Vector=0.360, BM25=0.628, ColBERT=0.392, Context=0.488
+
+Testing Query: neural network implementation tools
+Date: 2025-03-31 09:39:11
+
+=== Results ===
+1. [Score: 1.000, ID: 1, Source: TensorFlow]
+Content: TensorFlow is an open-source platform for machine learning and deep learning, widely used for neural network implementations.
+Why: Highly relevant, strong semantic match, strong contextual match, matched terms: network, neural
+Breakdown: Vector=0.837, BM25=0.784, ColBERT=0.873, Context=0.882
+
+2. [Score: 0.625, ID: 6, Source: Keras]
+Content: Keras is a high-level neural networks API that runs on top of TensorFlow, making deep learning more accessible.
+Why: Relevant, strong semantic match, matched terms: neural
+Breakdown: Vector=0.752, BM25=0.394, ColBERT=0.799, Context=0.687
+
+3. [Score: 0.450, ID: 2, Source: PyTorch]
+Content: PyTorch offers dynamic computation graphs and is preferred for research in deep learning and neural networks.
+Why: Moderately relevant, strong semantic match, matched terms: neural
+Breakdown: Vector=0.747, BM25=0.500, ColBERT=0.667, Context=0.686
+
+4. [Score: 0.427, ID: 3, Source: Scikit-learn]
+Content: Scikit-learn provides simple and efficient tools for data mining and data analysis, focusing on traditional machine learning algorithms.
+Why: Moderately relevant, matched terms: tools
+Breakdown: Vector=0.447, BM25=0.784, ColBERT=0.511, Context=0.629
+
+5. [Score: 0.360, ID: 8, Source: GCP]
+Content: Google Cloud AI Platform provides tools for the entire ML workflow from data preparation to prediction.
+Why: Moderately relevant, matched terms: tools
+Breakdown: Vector=0.289, BM25=0.784, ColBERT=0.514, Context=0.588
+
+
+=== Overall Metrics ===
+Average Precision: 0.723
+Average Recall: 0.867
+Average F1 Score: 0.731

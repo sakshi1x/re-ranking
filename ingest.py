@@ -19,7 +19,7 @@ import warnings
 def populate_sample_data():
         directory = "./chroma_db"
         top_k = 5
-        embeddings = OllamaEmbeddings(model="nomic-embed-text", base_url="https://jo3m4y06rnnwhaz.askbhunte.com")
+        embeddings = OllamaEmbeddings(model="nomic-embed-text", base_url="")
         client = chromadb.PersistentClient(path=directory)
         collection_name = "ml_tools_collection"
         try:
