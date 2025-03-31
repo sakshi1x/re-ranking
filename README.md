@@ -20,7 +20,7 @@ A versatile retrieval and reranking system built with ChromaDB, BM25, ColBERT, a
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/AdvancedRerankingTool.git
+   git clone https://github.com/sakshi-rumsan/ranking_model.git
    cd ..
    ```
 
