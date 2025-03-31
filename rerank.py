@@ -23,7 +23,7 @@ logging.basicConfig(level=logging.INFO)
 
 
 
-class AdvancedRerankingTool(BaseTool):
+class RerankingTool(BaseTool):
     name: str = "AdvancedRerankingTool"
     description: str = "Enhanced retrieval with advanced reranking capabilities for any dataset."
     args_schema: type = RetrievalToolInput

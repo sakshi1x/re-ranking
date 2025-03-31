@@ -14,11 +14,11 @@ import logging
 import re
 import warnings
 # from retrive import RetrievalToolInput
-from rerank import AdvancedRerankingTool
+from rerank import RerankingTool
 
 async def test_tool():
     populate_sample_data()
-    tool = AdvancedRerankingTool()
+    tool = RerankingTool()
     queries = [
         "What is the best tool for machine learning?",
         "deep learning framework",
