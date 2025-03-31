@@ -20,7 +20,7 @@ warnings.filterwarnings("ignore", category=UserWarning)
 
 # Logger setup to log messages
 logger = logging.getLogger(__name__)
-logging.basicConfig(level=logging.INFO)
+# logging.basicConfig(level=logging.INFO)
 
 
 class RerankingTool(BaseTool):
@@ -53,7 +53,7 @@ class RerankingTool(BaseTool):
         
         try:
             # Initialize necessary components like embeddings, client, and reranker
-            self._embeddings = OllamaEmbeddings(model="nomic-embed-text", base_url="https://jo3m4y06rnnwhaz.askbhunte.com")
+            self._embeddings = OllamaEmbeddings(model="nomic-embed-text", base_url="")
             self._client = chromadb.PersistentClient(path=persist_directory)
             self._colbert_reranker = RAGPretrainedModel.from_pretrained("colbert-ir/colbertv2.0")
             logger.info("Initialized retrieval components successfully.")
@@ -345,7 +345,6 @@ class RerankingTool(BaseTool):
             total_precision += precision
             total_recall += recall
             total_f1 += f1
-        
-        logger.info(f"Average Precision: {total_precision / len(test_cases):.3f}")
-        logger.info(f"Average Recall: {total_recall / len(test_cases):.3f}")
-        logger.info(f"Average F1: {total_f1 / len(test_cases):.3f}")
+        print(f"Average Precision: {total_precision / len(test_cases):.3f}")
+        print(f"Average Recall: {total_recall / len(test_cases):.3f}")
+        print(f"Average F1: {total_f1 / len(test_cases):.3f}")

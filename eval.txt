@@ -1,7 +1,7 @@
 === Starting Retrieval Tests ===
 
 Testing Query: What is the best tool for machine learning?
-Date: 2025-03-31 09:39:07
+Date: 2025-03-31 10:43:40
 
 === Results ===
 1. [Score: 0.913, ID: 3, Source: Scikit-learn]
@@ -30,7 +30,7 @@ Why: Moderately relevant, matched terms: for, is, machine
 Breakdown: Vector=0.507, BM25=0.717, ColBERT=0.690, Context=0.628
 
 Testing Query: deep learning framework
-Date: 2025-03-31 09:39:08
+Date: 2025-03-31 10:43:44
 
 === Results ===
 1. [Score: 1.000, ID: 1, Source: TensorFlow]
@@ -59,7 +59,7 @@ Why: Moderately relevant, matched terms: learning
 Breakdown: Vector=0.390, BM25=0.516, ColBERT=0.500, Context=0.472
 
 Testing Query: cloud ML deployment services
-Date: 2025-03-31 09:39:09
+Date: 2025-03-31 10:43:47
 
 === Results ===
 1. [Score: 1.000, ID: 8, Source: GCP]
@@ -88,7 +88,7 @@ Why: Moderately relevant
 Breakdown: Vector=0.367, BM25=0.769, ColBERT=0.385, Context=0.293
 
 Testing Query: Python libraries for data science
-Date: 2025-03-31 09:39:10
+Date: 2025-03-31 10:43:49
 
 === Results ===
 1. [Score: 1.000, ID: 4, Source: Python]
@@ -117,7 +117,7 @@ Why: Moderately relevant, matched terms: data, for
 Breakdown: Vector=0.360, BM25=0.628, ColBERT=0.392, Context=0.488
 
 Testing Query: neural network implementation tools
-Date: 2025-03-31 09:39:11
+Date: 2025-03-31 10:43:52
 
 === Results ===
 1. [Score: 1.000, ID: 1, Source: TensorFlow]
@@ -145,8 +145,4 @@ Content: Google Cloud AI Platform provides tools for the entire ML workflow from
 Why: Moderately relevant, matched terms: tools
 Breakdown: Vector=0.289, BM25=0.784, ColBERT=0.514, Context=0.588
 
-
-=== Overall Metrics ===
-Average Precision: 0.723
-Average Recall: 0.867
-Average F1 Score: 0.731
+=== Starting Accuracy Evaluation ===
