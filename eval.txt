@@ -1,7 +1,7 @@
 === Starting Retrieval Tests ===
 
 Testing Query: best strategies for customer retention
-Date: 2025-04-01 14:15:52
+Date: 2025-04-01 14:41:40
 
 === Results ===
 1. [Score: 1.000, ID: 41, Source: Business]
@@ -30,7 +30,7 @@ Why: Moderately relevant, strong semantic match, matched terms: customer
 Breakdown: Vector=0.227, BM25=0.000, ColBERT=1.000, Context=0.392
 
 Testing Query: cloud computing benefits
-Date: 2025-04-01 14:15:54
+Date: 2025-04-01 14:41:42
 
 === Results ===
 1. [Score: 1.000, ID: 1, Source: Technology]
@@ -59,7 +59,7 @@ Why: Moderately relevant, strong semantic match
 Breakdown: Vector=0.146, BM25=0.000, ColBERT=1.000, Context=0.238
 
 Testing Query: machine learning for market prediction
-Date: 2025-04-01 14:15:57
+Date: 2025-04-01 14:41:51
 
 === Results ===
 1. [Score: 0.812, ID: 11, Source: Technology]
@@ -88,7 +88,7 @@ Why: Moderately relevant, strong semantic match, matched terms: market
 Breakdown: Vector=0.218, BM25=0.920, ColBERT=1.000, Context=0.531
 
 Testing Query: sustainable farming techniques
-Date: 2025-04-01 14:15:59
+Date: 2025-04-01 14:42:00
 
 === Results ===
 1. [Score: 0.850, ID: 76, Source: Agriculture]
@@ -117,7 +117,7 @@ Why: Moderately relevant, strong semantic match, matched terms: farming
 Breakdown: Vector=0.333, BM25=0.920, ColBERT=1.000, Context=0.546
 
 Testing Query: telemedicine advantages
-Date: 2025-04-01 14:16:01
+Date: 2025-04-01 14:42:04
 
 === Results ===
 1. [Score: 0.712, ID: 21, Source: Healthcare]
@@ -146,7 +146,7 @@ Why: Moderately relevant, strong semantic match
 Breakdown: Vector=0.321, BM25=0.640, ColBERT=1.000, Context=0.364
 
 Testing Query: blockchain in finance
-Date: 2025-04-01 14:16:03
+Date: 2025-04-01 14:42:34
 
 === Results ===
 1. [Score: 0.712, ID: 4, Source: Technology]
@@ -175,7 +175,7 @@ Why: Moderately relevant, strong semantic match, matched terms: in
 Breakdown: Vector=0.000, BM25=0.960, ColBERT=1.000, Context=0.457
 
 Testing Query: online learning platforms
-Date: 2025-04-01 14:16:06
+Date: 2025-04-01 14:42:36
 
 === Results ===
 1. [Score: 0.850, ID: 61, Source: Education]
@@ -204,7 +204,7 @@ Why: Moderately relevant, strong semantic match, matched terms: learning
 Breakdown: Vector=0.308, BM25=0.640, ColBERT=1.000, Context=0.432
 
 Testing Query: renewable energy solutions
-Date: 2025-04-01 14:16:08
+Date: 2025-04-01 14:42:39
 
 === Results ===
 1. [Score: 0.850, ID: 77, Source: Environment]
@@ -233,7 +233,7 @@ Why: Moderately relevant, strong semantic match
 Breakdown: Vector=0.360, BM25=0.000, ColBERT=1.000, Context=0.365
 
 Testing Query: AI in autonomous vehicles
-Date: 2025-04-01 14:16:10
+Date: 2025-04-01 14:42:41
 
 === Results ===
 1. [Score: 0.593, ID: 6, Source: Technology]
@@ -262,7 +262,7 @@ Why: Moderately relevant, strong semantic match, matched terms: in
 Breakdown: Vector=0.297, BM25=0.800, ColBERT=1.000, Context=0.587
 
 Testing Query: supply chain optimization methods
-Date: 2025-04-01 14:16:12
+Date: 2025-04-01 14:42:44
 
 === Results ===
 1. [Score: 1.000, ID: 42, Source: Business]
