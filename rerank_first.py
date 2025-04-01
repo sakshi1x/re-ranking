@@ -56,8 +56,7 @@ class RerankingTool(BaseTool):
         self._persist_directory = persist_directory
         self._top_k = top_k
         self._collection_name = collection_name
-        # Adjusted default weights to favor semantic methods slightly more
-        self._default_weights = default_weights or {"vector": 0.3, "bm25": 0.2, "colbert": 0.35, "context": 0.15}
+        self._default_weights = default_weights or {"vector": 0.25, "bm25": 0.25, "colbert": 0.3, "context": 0.2}
 
         try:
             self._embeddings = OllamaEmbeddings(model=embedding_model, base_url=embedding_url)
@@ -78,13 +77,12 @@ class RerankingTool(BaseTool):
 
     async def _retrieve_vector(self, query: str) -> List[Document]:
         """
-        Retrieve documents using vector similarity with embeddings, widened to improve recall.
+        Retrieve documents using vector similarity with embeddings.
         """
         collection = self._client.get_or_create_collection(self._collection_name)
         query_embedding = self._embeddings.embed_query(query)
         total_docs = len(collection.get()["ids"])
-        # Increased to top_k * 5 to capture more candidates
-        n_results = min(self._top_k * 5, total_docs) if total_docs > 0 else self._top_k
+        n_results = min(self._top_k * 2, total_docs) if total_docs > 0 else self._top_k
 
         results = collection.query(
             query_embeddings=[query_embedding],
@@ -94,7 +92,7 @@ class RerankingTool(BaseTool):
 
         docs = []
         for doc, meta, dist in zip(results["documents"][0], results["metadatas"][0], results["distances"][0]):
-            vector_score = max(0, 1 - dist)  # Convert distance to similarity
+            vector_score = max(0, 1 - dist)
             docs.append(Document(page_content=doc, metadata={
                 **(meta or {}),
                 "vector_score": vector_score,
@@ -103,12 +101,11 @@ class RerankingTool(BaseTool):
                 "context_score": 0.0,
                 "retrieval_method": "vector"
             }))
-        logger.debug(f"Vector retrieved {len(docs)} documents for query: {query}")
         return docs
 
     async def _retrieve_bm25(self, query: str) -> List[Document]:
         """
-        Retrieve documents using BM25 ranking, improved to use actual BM25 scores.
+        Retrieve documents using BM25 ranking.
         """
         collection = self._client.get_or_create_collection(self._collection_name)
         all_results = collection.get(include=["documents", "metadatas"])
@@ -122,13 +119,12 @@ class RerankingTool(BaseTool):
 
         try:
             bm25_retriever = BM25Retriever.from_documents(all_docs)
-            bm25_retriever.k = min(self._top_k * 5, len(all_docs))  # Widened pool
+            bm25_retriever.k = min(self._top_k * 2, len(all_docs))
             results = bm25_retriever.invoke(query)
-            # Note: LangChain's BM25Retriever doesn't return raw scores directly; simulate scoring
+
             docs = []
             for i, doc in enumerate(results):
-                # Simplified scoring based on rank; ideally, use raw BM25 scores if available
-                bm25_score = 1.0 - (i / max(len(results), 1))  # Normalized positional score
+                bm25_score = 1.0 - (i / len(results))  # Simple positional scoring
                 docs.append(Document(page_content=doc.page_content, metadata={
                     **doc.metadata,
                     "bm25_score": bm25_score,
@@ -137,7 +133,6 @@ class RerankingTool(BaseTool):
                     "context_score": 0.0,
                     "retrieval_method": "bm25"
                 }))
-            logger.debug(f"BM25 retrieved {len(docs)} documents for query: {query}")
             return docs
         except Exception as e:
             logger.error(f"BM25 retrieval failed: {e}")
@@ -145,32 +140,30 @@ class RerankingTool(BaseTool):
 
     def _colbert_rerank(self, query: str, docs: List[Document]) -> List[Document]:
         """
-        Rerank documents using ColBERT with fixed normalization for consistency.
+        Rerank documents using ColBERT for fine-tuned semantic similarity.
         """
         doc_texts = [doc.page_content for doc in docs]
         reranked = self._colbert_reranker.rerank(query, doc_texts, k=len(docs))
         scores = np.array([result["score"] for result in reranked])
-        # Fixed normalization assuming ColBERT scores range roughly 0-2
-        normalized = np.clip(scores / 2.0, 0, 1)
+
+        normalized = (scores - scores.min()) / (scores.max() - scores.min() + 1e-6) if scores.max() > scores.min() else np.ones_like(scores) * 0.5
         for i, result in enumerate(reranked):
             docs[result["result_index"]].metadata["colbert_score"] = normalized[i]
-        logger.debug(f"ColBERT reranked {len(docs)} documents with score range: {scores.min():.3f}-{scores.max():.3f}")
         return docs
 
     def _contextual_similarity(self, query: str, docs: List[Document]) -> List[Document]:
         """
-        Calculate contextual similarity with dynamic balance between cosine and overlap.
+        Calculate contextual similarity generically based on embeddings and term overlap.
         """
         query_embedding = np.array(self._embeddings.embed_query(query))
         query_terms = set(self._preprocess_query(query).split())
-        overlap_weight = min(0.5, len(query_terms) / 10)  # Dynamic based on query length
 
         for doc in docs:
             doc_embedding = np.array(self._embeddings.embed_query(doc.page_content))
             cosine_sim = np.dot(query_embedding, doc_embedding) / (np.linalg.norm(query_embedding) * np.linalg.norm(doc_embedding) + 1e-6)
             doc_terms = set(doc.page_content.lower().split())
             overlap = len(query_terms & doc_terms) / max(len(query_terms), 1)
-            doc.metadata["context_score"] = (1 - overlap_weight) * cosine_sim + overlap_weight * overlap
+            doc.metadata["context_score"] = 0.7 * cosine_sim + 0.3 * overlap  # Adjusted for generality
         return docs
 
     def _normalize_scores(self, docs: List[Document]) -> List[Document]:
@@ -187,7 +180,7 @@ class RerankingTool(BaseTool):
 
     def _adjust_weights(self, weights: Dict[str, float], query: str) -> Dict[str, float]:
         """
-        Dynamically adjust weights based on query characteristics.
+        Dynamically adjust weights based on query characteristics, avoiding domain-specific assumptions.
         """
         terms = set(self._preprocess_query(query).split())
         term_count = len(terms)
@@ -195,14 +188,14 @@ class RerankingTool(BaseTool):
         semantic_density = np.linalg.norm(embedding) / max(len(query), 1)
 
         if term_count <= 3:  # Short queries favor precision
-            return {"vector": 0.35, "bm25": 0.3, "colbert": 0.25, "context": 0.1}
-        elif term_count >= 7 or semantic_density > 0.15:  # Long/dense queries favor semantics
-            return {"vector": 0.3, "bm25": 0.15, "colbert": 0.4, "context": 0.15}
-        return weights  # Default weights for balanced queries
+            return {"vector": 0.3, "bm25": 0.35, "colbert": 0.25, "context": 0.1}
+        elif term_count >= 7 or semantic_density > 0.15:  # Long or dense queries favor semantics
+            return {"vector": 0.35, "bm25": 0.2, "colbert": 0.3, "context": 0.15}
+        return weights  # Default to provided weights for balanced queries
 
     def _advanced_fusion(self, docs: List[Document], weights: Dict[str, float], query: str) -> List[Document]:
         """
-        Combine scores using ranking fusion without amplification.
+        Combine scores using a generic ranking fusion strategy.
         """
         method_ranks = {}
         for method in ["vector", "bm25", "colbert", "context"]:
@@ -211,10 +204,9 @@ class RerankingTool(BaseTool):
 
         for doc in docs:
             rrf_score = sum(weights[m] * method_ranks[m].get(doc.page_content, 0) for m in weights)
-            doc.metadata["final_score"] = min(1.0, rrf_score)  # Removed amplification
-        final_docs = sorted(docs, key=lambda x: x.metadata["final_score"], reverse=True)[:self._top_k]
-        logger.debug(f"Fusion produced {len(final_docs)} final documents with scores: {[d.metadata['final_score'] for d in final_docs]}")
-        return final_docs
+            doc.metadata["final_score"] = min(1.0, rrf_score * 1.2)  # Slightly reduced amplification
+
+        return sorted(docs, key=lambda x: x.metadata["final_score"], reverse=True)[:self._top_k]
 
     async def _run(self, query: str, weights: Optional[Dict[str, float]] = None) -> str:
         """
@@ -225,7 +217,6 @@ class RerankingTool(BaseTool):
             return "Empty query provided."
 
         weights = self._adjust_weights(weights or self._default_weights, query)
-        logger.info(f"Running query: {query} with weights: {weights}")
 
         vector_docs = await self._retrieve_vector(query)
         bm25_docs = await self._retrieve_bm25(query)
@@ -283,7 +274,7 @@ class RerankingTool(BaseTool):
 
     async def evaluate_accuracy(self, test_cases: List[Dict[str, List[str]]]) -> None:
         """
-        Evaluate accuracy using precision, recall, and F1 with semantic similarity.
+        Evaluate accuracy using precision, recall, and F1 metrics.
         """
         weights = self._default_weights
         total_precision, total_recall, total_f1 = 0, 0, 0
@@ -297,14 +288,10 @@ class RerankingTool(BaseTool):
             ]
 
             expected_terms = set(" ".join(case["expected"]).lower().split())
-            expected_embedding = self._embeddings.embed_query(" ".join(case["expected"]))
             retrieved_set = set()
             for i, content in enumerate(retrieved_contents[:self._top_k]):
-                content_embedding = self._embeddings.embed_query(content)
-                sim = np.dot(expected_embedding, content_embedding) / (np.linalg.norm(expected_embedding) * np.linalg.norm(content_embedding) + 1e-6)
                 content_terms = set(content.split())
-                # Consider document relevant if semantic similarity > 0.7 or term overlap exists
-                if sim > 0.7 or expected_terms & content_terms:
+                if expected_terms & content_terms:
                     retrieved_set.add(i)
 
             expected_set = set(range(min(len(case["expected"]), self._top_k)))
@@ -315,13 +302,7 @@ class RerankingTool(BaseTool):
             total_precision += precision
             total_recall += recall
             total_f1 += f1
-            logger.debug(f"Query: {case['query']}, Precision: {precision:.3f}, Recall: {recall:.3f}, F1: {f1:.3f}")
 
-        avg_precision = total_precision / len(test_cases)
-        avg_recall = total_recall / len(test_cases)
-        avg_f1 = total_f1 / len(test_cases)
-        print(f"Average Precision: {avg_precision:.3f}")
-        print(f"Average Recall: {avg_recall:.3f}")
-        print(f"Average F1: {avg_f1:.3f}")
-        logger.info(f"Evaluation completed: Precision={avg_precision:.3f}, Recall={avg_recall:.3f}, F1={avg_f1:.3f}")
-
+        print(f"Average Precision: {total_precision / len(test_cases):.3f}")
+        print(f"Average Recall: {total_recall / len(test_cases):.3f}")
+        print(f"Average F1: {total_f1 / len(test_cases):.3f}")
