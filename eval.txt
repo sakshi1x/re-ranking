@@ -1,0 +1,293 @@
+=== Starting Retrieval Tests ===
+
+Testing Query: best strategies for customer retention
+Date: 2025-04-01 14:41:40
+
+=== Results ===
+1. [Score: 1.000, ID: 41, Source: Business]
+Content: Effective customer retention strategies boost business growth.
+Why: Highly relevant, strong semantic match, strong contextual match, matched terms: customer, retention, strategies
+Breakdown: Vector=1.000, BM25=1.000, ColBERT=1.000, Context=1.000
+
+2. [Score: 0.411, ID: 93, Source: Marketing]
+Content: Content marketing builds long-term customer trust.
+Why: Moderately relevant, strong semantic match, matched terms: customer
+Breakdown: Vector=0.310, BM25=0.760, ColBERT=1.000, Context=0.420
+
+3. [Score: 0.312, ID: 53, Source: Business]
+Content: CRM systems strengthen customer relationships.
+Why: Moderately relevant, strong semantic match, matched terms: customer
+Breakdown: Vector=0.283, BM25=0.880, ColBERT=1.000, Context=0.410
+
+4. [Score: 0.257, ID: 58, Source: Business]
+Content: Pricing strategies enhance market competitiveness.
+Why: Moderately relevant, strong semantic match, matched terms: strategies
+Breakdown: Vector=0.193, BM25=0.960, ColBERT=1.000, Context=0.381
+
+5. [Score: 0.197, ID: 60, Source: Business]
+Content: Customer feedback loops refine product offerings.
+Why: Moderately relevant, strong semantic match, matched terms: customer
+Breakdown: Vector=0.227, BM25=0.000, ColBERT=1.000, Context=0.392
+
+Testing Query: cloud computing benefits
+Date: 2025-04-01 14:41:42
+
+=== Results ===
+1. [Score: 1.000, ID: 1, Source: Technology]
+Content: Cloud computing enhances scalability for modern enterprises.
+Why: Highly relevant, strong semantic match, strong contextual match, matched terms: cloud, computing
+Breakdown: Vector=1.000, BM25=1.000, ColBERT=1.000, Context=1.000
+
+2. [Score: 0.400, ID: 3, Source: Technology]
+Content: Quantum computing promises breakthroughs in complex problem-solving.
+Why: Moderately relevant, strong semantic match, matched terms: computing
+Breakdown: Vector=0.160, BM25=0.960, ColBERT=1.000, Context=0.449
+
+3. [Score: 0.337, ID: 25, Source: Healthcare]
+Content: Mental health apps support emotional well-being.
+Why: Moderately relevant, strong semantic match
+Breakdown: Vector=0.170, BM25=0.000, ColBERT=1.000, Context=0.248
+
+4. [Score: 0.253, ID: 19, Source: Technology]
+Content: Edge computing reduces latency in real-time applications.
+Why: Moderately relevant, strong semantic match, matched terms: computing
+Breakdown: Vector=0.124, BM25=0.920, ColBERT=1.000, Context=0.434
+
+5. [Score: 0.181, ID: 100, Source: Technology]
+Content: Smart home devices improve energy efficiency.
+Why: Moderately relevant, strong semantic match
+Breakdown: Vector=0.146, BM25=0.000, ColBERT=1.000, Context=0.238
+
+Testing Query: machine learning for market prediction
+Date: 2025-04-01 14:41:51
+
+=== Results ===
+1. [Score: 0.812, ID: 11, Source: Technology]
+Content: Machine learning optimizes predictive analytics.
+Why: Highly relevant, strong semantic match, strong contextual match, matched terms: learning, machine
+Breakdown: Vector=1.000, BM25=0.880, ColBERT=1.000, Context=1.000
+
+2. [Score: 0.500, ID: 50, Source: Business]
+Content: Business intelligence tools analyze market trends.
+Why: Moderately relevant, strong semantic match, matched terms: market
+Breakdown: Vector=0.598, BM25=0.960, ColBERT=1.000, Context=0.649
+
+3. [Score: 0.351, ID: 58, Source: Business]
+Content: Pricing strategies enhance market competitiveness.
+Why: Moderately relevant, strong semantic match, matched terms: market
+Breakdown: Vector=0.024, BM25=1.000, ColBERT=1.000, Context=0.471
+
+4. [Score: 0.219, ID: 29, Source: Healthcare]
+Content: AI diagnostics predict diseases with high accuracy.
+Why: Moderately relevant, strong semantic match
+Breakdown: Vector=0.491, BM25=0.320, ColBERT=1.000, Context=0.389
+
+5. [Score: 0.212, ID: 86, Source: Finance]
+Content: Automated trading systems improve market efficiency.
+Why: Moderately relevant, strong semantic match, matched terms: market
+Breakdown: Vector=0.218, BM25=0.920, ColBERT=1.000, Context=0.531
+
+Testing Query: sustainable farming techniques
+Date: 2025-04-01 14:42:00
+
+=== Results ===
+1. [Score: 0.850, ID: 76, Source: Agriculture]
+Content: Sustainable farming practices reduce environmental impact.
+Why: Highly relevant, strong semantic match, strong contextual match, matched terms: farming, sustainable
+Breakdown: Vector=1.000, BM25=0.960, ColBERT=1.000, Context=1.000
+
+2. [Score: 0.550, ID: 83, Source: Environment]
+Content: Water conservation techniques support sustainable living.
+Why: Relevant, strong semantic match, strong contextual match, matched terms: sustainable, techniques
+Breakdown: Vector=0.699, BM25=1.000, ColBERT=1.000, Context=0.876
+
+3. [Score: 0.332, ID: 79, Source: Agriculture]
+Content: Precision agriculture increases crop yields sustainably.
+Why: Moderately relevant, strong semantic match
+Breakdown: Vector=0.718, BM25=0.000, ColBERT=1.000, Context=0.524
+
+4. [Score: 0.258, ID: 85, Source: Agriculture]
+Content: Urban farming promotes local food production.
+Why: Moderately relevant, strong semantic match, matched terms: farming
+Breakdown: Vector=0.531, BM25=0.880, ColBERT=1.000, Context=0.627
+
+5. [Score: 0.245, ID: 81, Source: Agriculture]
+Content: Organic farming meets growing consumer demand.
+Why: Moderately relevant, strong semantic match, matched terms: farming
+Breakdown: Vector=0.333, BM25=0.920, ColBERT=1.000, Context=0.546
+
+Testing Query: telemedicine advantages
+Date: 2025-04-01 14:42:04
+
+=== Results ===
+1. [Score: 0.712, ID: 21, Source: Healthcare]
+Content: Telemedicine improves healthcare access in rural regions.
+Why: Relevant, strong semantic match, strong contextual match, matched terms: telemedicine
+Breakdown: Vector=1.000, BM25=0.000, ColBERT=1.000, Context=1.000
+
+2. [Score: 0.388, ID: 32, Source: Healthcare]
+Content: Telehealth counseling supports mental health remotely.
+Why: Moderately relevant, strong semantic match
+Breakdown: Vector=0.507, BM25=0.720, ColBERT=1.000, Context=0.465
+
+3. [Score: 0.347, ID: 100, Source: Technology]
+Content: Smart home devices improve energy efficiency.
+Why: Moderately relevant, strong semantic match
+Breakdown: Vector=0.121, BM25=1.000, ColBERT=1.000, Context=0.254
+
+4. [Score: 0.244, ID: 5, Source: Technology]
+Content: 5G networks enable faster and more reliable data transmission.
+Why: Moderately relevant, strong semantic match
+Breakdown: Vector=0.423, BM25=0.000, ColBERT=1.000, Context=0.419
+
+5. [Score: 0.205, ID: 34, Source: Healthcare]
+Content: Medical imaging improves diagnostic precision.
+Why: Moderately relevant, strong semantic match
+Breakdown: Vector=0.321, BM25=0.640, ColBERT=1.000, Context=0.364
+
+Testing Query: blockchain in finance
+Date: 2025-04-01 14:42:34
+
+=== Results ===
+1. [Score: 0.712, ID: 4, Source: Technology]
+Content: Blockchain ensures secure and transparent transactions.
+Why: Relevant, strong semantic match, strong contextual match, matched terms: blockchain
+Breakdown: Vector=1.000, BM25=0.000, ColBERT=1.000, Context=1.000
+
+2. [Score: 0.361, ID: 89, Source: Finance]
+Content: Cryptocurrency reshapes global financial systems.
+Why: Moderately relevant, strong semantic match
+Breakdown: Vector=0.710, BM25=0.000, ColBERT=1.000, Context=0.573
+
+3. [Score: 0.336, ID: 10, Source: Technology]
+Content: Robotics revolutionizes automation in manufacturing.
+Why: Moderately relevant, strong semantic match, matched terms: in
+Breakdown: Vector=0.000, BM25=1.000, ColBERT=1.000, Context=0.400
+
+4. [Score: 0.219, ID: 52, Source: Business]
+Content: Financial forecasting predicts revenue growth.
+Why: Moderately relevant, strong semantic match
+Breakdown: Vector=0.161, BM25=0.000, ColBERT=1.000, Context=0.351
+
+5. [Score: 0.195, ID: 31, Source: Healthcare]
+Content: Genomics drives advancements in personalized treatments.
+Why: Moderately relevant, strong semantic match, matched terms: in
+Breakdown: Vector=0.000, BM25=0.960, ColBERT=1.000, Context=0.457
+
+Testing Query: online learning platforms
+Date: 2025-04-01 14:42:36
+
+=== Results ===
+1. [Score: 0.850, ID: 61, Source: Education]
+Content: Online learning platforms revolutionize education delivery.
+Why: Highly relevant, strong semantic match, strong contextual match, matched terms: learning, online, platforms
+Breakdown: Vector=1.000, BM25=0.960, ColBERT=1.000, Context=1.000
+
+2. [Score: 0.650, ID: 66, Source: Education]
+Content: Blended learning combines online and in-person teaching.
+Why: Relevant, strong semantic match, matched terms: learning, online
+Breakdown: Vector=0.541, BM25=1.000, ColBERT=1.000, Context=0.675
+
+3. [Score: 0.276, ID: 71, Source: Education]
+Content: Distance learning supports remote education access.
+Why: Moderately relevant, strong semantic match, matched terms: learning
+Breakdown: Vector=0.504, BM25=0.760, ColBERT=1.000, Context=0.503
+
+4. [Score: 0.250, ID: 45, Source: Business]
+Content: E-commerce platforms drive retail innovation.
+Why: Moderately relevant, strong semantic match, matched terms: platforms
+Breakdown: Vector=0.392, BM25=0.880, ColBERT=1.000, Context=0.463
+
+5. [Score: 0.170, ID: 64, Source: Education]
+Content: Adaptive learning adjusts to individual student needs.
+Why: Moderately relevant, strong semantic match, matched terms: learning
+Breakdown: Vector=0.308, BM25=0.640, ColBERT=1.000, Context=0.432
+
+Testing Query: renewable energy solutions
+Date: 2025-04-01 14:42:39
+
+=== Results ===
+1. [Score: 0.850, ID: 77, Source: Environment]
+Content: Renewable energy sources combat climate change.
+Why: Highly relevant, strong semantic match, strong contextual match, matched terms: energy, renewable
+Breakdown: Vector=1.000, BM25=0.960, ColBERT=1.000, Context=1.000
+
+2. [Score: 0.445, ID: 100, Source: Technology]
+Content: Smart home devices improve energy efficiency.
+Why: Moderately relevant, strong semantic match, matched terms: energy
+Breakdown: Vector=0.358, BM25=1.000, ColBERT=1.000, Context=0.566
+
+3. [Score: 0.425, ID: 80, Source: Environment]
+Content: Solar energy adoption reduces reliance on fossil fuels.
+Why: Moderately relevant, strong semantic match, matched terms: energy
+Breakdown: Vector=0.555, BM25=0.880, ColBERT=1.000, Context=0.637
+
+4. [Score: 0.333, ID: 13, Source: Technology]
+Content: Smart grids improve energy distribution efficiency.
+Why: Moderately relevant, strong semantic match, matched terms: energy
+Breakdown: Vector=0.523, BM25=0.920, ColBERT=1.000, Context=0.626
+
+5. [Score: 0.182, ID: 83, Source: Environment]
+Content: Water conservation techniques support sustainable living.
+Why: Moderately relevant, strong semantic match
+Breakdown: Vector=0.360, BM25=0.000, ColBERT=1.000, Context=0.365
+
+Testing Query: AI in autonomous vehicles
+Date: 2025-04-01 14:42:41
+
+=== Results ===
+1. [Score: 0.593, ID: 6, Source: Technology]
+Content: Artificial intelligence automates repetitive tasks efficiently.
+Why: Relevant, strong semantic match
+Breakdown: Vector=1.000, BM25=0.000, ColBERT=1.000, Context=0.524
+
+2. [Score: 0.538, ID: 99, Source: Technology]
+Content: Ethical AI ensures fairness in automated decisions.
+Why: Relevant, strong semantic match, strong contextual match, matched terms: ai, in
+Breakdown: Vector=0.934, BM25=0.880, ColBERT=1.000, Context=1.000
+
+3. [Score: 0.454, ID: 10, Source: Technology]
+Content: Robotics revolutionizes automation in manufacturing.
+Why: Moderately relevant, strong semantic match, strong contextual match, matched terms: in
+Breakdown: Vector=0.746, BM25=1.000, ColBERT=1.000, Context=0.704
+
+4. [Score: 0.293, ID: 29, Source: Healthcare]
+Content: AI diagnostics predict diseases with high accuracy.
+Why: Moderately relevant, strong semantic match, strong contextual match, matched terms: ai
+Breakdown: Vector=0.753, BM25=0.000, ColBERT=1.000, Context=0.706
+
+5. [Score: 0.183, ID: 26, Source: Healthcare]
+Content: Robotic surgery enhances precision in complex operations.
+Why: Moderately relevant, strong semantic match, matched terms: in
+Breakdown: Vector=0.297, BM25=0.800, ColBERT=1.000, Context=0.587
+
+Testing Query: supply chain optimization methods
+Date: 2025-04-01 14:42:44
+
+=== Results ===
+1. [Score: 1.000, ID: 42, Source: Business]
+Content: AI-driven analytics optimize supply chain management.
+Why: Highly relevant, strong semantic match, strong contextual match, matched terms: chain, supply
+Breakdown: Vector=1.000, BM25=1.000, ColBERT=1.000, Context=1.000
+
+2. [Score: 0.500, ID: 48, Source: Business]
+Content: Supply chain transparency enhances customer loyalty.
+Why: Moderately relevant, strong semantic match, strong contextual match, matched terms: chain, supply
+Breakdown: Vector=0.336, BM25=0.960, ColBERT=1.000, Context=0.768
+
+3. [Score: 0.269, ID: 35, Source: Healthcare]
+Content: Healthcare analytics optimize hospital operations.
+Why: Moderately relevant, strong semantic match
+Breakdown: Vector=0.280, BM25=0.520, ColBERT=1.000, Context=0.322
+
+4. [Score: 0.197, ID: 51, Source: Business]
+Content: Agile methodologies improve project adaptability.
+Why: Moderately relevant, strong semantic match
+Breakdown: Vector=0.175, BM25=0.000, ColBERT=1.000, Context=0.286
+
+5. [Score: 0.159, ID: 11, Source: Technology]
+Content: Machine learning optimizes predictive analytics.
+Why: Moderately relevant, strong semantic match
+Breakdown: Vector=0.165, BM25=0.000, ColBERT=1.000, Context=0.282
+
+=== Starting Accuracy Evaluation ===

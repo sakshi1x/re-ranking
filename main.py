@@ -1,4 +1,3 @@
-
 import asyncio
 from typing import List, Dict, Optional
 from datetime import datetime
@@ -14,37 +13,75 @@ from ragatouille import RAGPretrainedModel
 import logging
 import re
 import warnings
-# from retrive import RetrievalToolInput
-from rerank import AdvancedRerankingTool
+from rerank import RerankingTool  # Assuming this is your generic RerankingTool from the previous response
+
+logger = logging.getLogger(__name__)
 
 async def test_tool():
-    populate_sample_data()
-    tool = AdvancedRerankingTool()
+    """
+    Test the RerankingTool with a variety of queries and evaluate its accuracy.
+    """
+    # Populate the database with generic data
+    populate_sample_data(
+        directory="./chroma_db",
+        collection_name="generic_collection",
+        embedding_url=""  # Adjust as needed
+    )
+
+    # Initialize the reranking tool
+    tool = RerankingTool(
+        persist_directory="./chroma_db",
+        top_k=5,
+        collection_name="generic_collection",
+        embedding_url=""
+    )
+
+    # Test queries spanning multiple domains
     queries = [
-        "What is the best tool for machine learning?",
-        "deep learning framework",
-        "cloud ML deployment services",
-        "Python libraries for data science",
-        "neural network implementation tools",
+        "best strategies for customer retention",
+        "cloud computing benefits",
+        "machine learning for market prediction",
+        "sustainable farming techniques",
+        "telemedicine advantages",
+        "blockchain in finance",
+        "online learning platforms",
+        "renewable energy solutions",
+        "AI in autonomous vehicles",
+        "supply chain optimization methods",
     ]
     weights = {"vector": 0.25, "bm25": 0.25, "colbert": 0.3, "context": 0.2}
-    print("=== Starting Retrieval Tests ===")
-    for query in queries:
-        print(f"\nTesting Query: {query}\nDate: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-        results = await tool._run(query, weights)
-        print("\n=== Results ===\n", results)
-    test_cases = [
-        {"name": "General ML tools", "query": "best tool for machine learning", "expected": ["machine learning", "tool", "algorithms"]},
-        {"name": "DL frameworks", "query": "deep learning framework", "expected": ["deep learning", "framework", "neural networks"]},
-        {"name": "Cloud ML services", "query": "cloud ML deployment", "expected": ["cloud", "deployment", "ML"]},
-        {"name": "Python data tools", "query": "Python data analysis", "expected": ["Python", "data analysis", "tool"]},
-        {"name": "NN APIs", "query": "neural networks API", "expected": ["neural networks", "API"]},
-    ]
 
-    # Evaluate accuracy with the test cases
-    print("\n=== Starting Accuracy Evaluation ===")
-    await tool.evaluate_accuracy(test_cases)
-    # await tool.evaluate_accuracy()
+    with open("eval.txt", "w") as f:
+        f.write("=== Starting Retrieval Tests ===\n")
+
+        for query in queries:
+            timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            f.write(f"\nTesting Query: {query}\nDate: {timestamp}\n")
+            print(f"\nTesting Query: {query}\nDate: {timestamp}")
+
+            results = await tool._run(query, weights)
+
+            f.write("\n=== Results ===\n" + str(results) + "\n")
+            print("\n=== Results ===\n", results)
+
+        # Test cases for accuracy evaluation
+        test_cases = [
+            {"name": "Customer Retention", "query": "best strategies for customer retention", "expected": ["loyalty programs", "personalized offers"]},
+            {"name": "Cloud Computing", "query": "cloud computing benefits", "expected": ["scalability", "cost reduction"]},
+            {"name": "Market Prediction", "query": "machine learning for market prediction", "expected": ["machine learning", "predict"]},
+            {"name": "Sustainable Farming", "query": "sustainable farming techniques", "expected": ["crop yield", "environment"]},
+            {"name": "Telemedicine", "query": "telemedicine advantages", "expected": ["healthcare", "rural"]},
+            {"name": "Blockchain", "query": "blockchain in finance", "expected": ["secure", "transactions"]},
+            {"name": "Online Learning", "query": "online learning platforms", "expected": ["education", "flexible"]},
+            {"name": "Renewable Energy", "query": "renewable energy solutions", "expected": ["solar", "climate"]},
+            {"name": "Autonomous Vehicles", "query": "AI in autonomous vehicles", "expected": ["artificial intelligence", "safety"]},
+            {"name": "Supply Chain", "query": "supply chain optimization methods", "expected": ["costs", "delivery"]},
+        ]
+
+        f.write("\n=== Starting Accuracy Evaluation ===\n")
+        print("\n=== Starting Accuracy Evaluation ===")
+
+        await tool.evaluate_accuracy(test_cases)
 
 if __name__ == "__main__":
     asyncio.run(test_tool())
