@@ -25,7 +25,7 @@ async def test_tool():
     populate_sample_data(
         directory="./chroma_db",
         collection_name="generic_collection",
-        embedding_url="https://jo3m4y06rnnwhaz.askbhunte.com"  # Adjust as needed
+        embedding_url=""  # Adjust as needed
     )
 
     # Initialize the reranking tool
@@ -33,7 +33,7 @@ async def test_tool():
         persist_directory="./chroma_db",
         top_k=5,
         collection_name="generic_collection",
-        embedding_url="https://jo3m4y06rnnwhaz.askbhunte.com"
+        embedding_url=""
     )
 
     # Test queries spanning multiple domains

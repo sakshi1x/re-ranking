@@ -46,7 +46,7 @@ class RerankingTool(BaseTool):
         top_k: int = 5,
         collection_name: str = "generic_collection",
         embedding_model: str = "nomic-embed-text",
-        embedding_url: str = "https://jo3m4y06rnnwhaz.askbhunte.com",
+        embedding_url: str = "",
         default_weights: Optional[Dict[str, float]] = None
     ):
         """
